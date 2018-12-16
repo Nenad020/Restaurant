@@ -1,0 +1,30 @@
+prozor sa slikama restorana, prva slika neki logo kasnije slike restorana i hrane/pica...
+slike se pomeraju uz neki slideshow
+neki hiperlinkovi za contact i about us page
+dugme login vodi na novu stranicu za logovanje
+
+
+log in prozor
+neki login prozor sa email ili id i password
+
+
+owner
+dodaje nove radnike
+moze da vidim sve tretune radnike, menije(sa posebnim dugmetom da otvori prozor sa svim stavkama), stavke(moze da se iskoristi isti nacin kao i sa menijem),
+racune, rezervacije
+
+
+konobar
+izdaje racune
+nemam delete racun neko naplati i kad to pritisnem izbaci mi neki format racuna i kad kliknem da naplati izbaci mi neki pdf ili sta vec sranje i obrise racun
+prikazuje mu samo njegove racune
+
+
+menadzer
+dodaje meni, stavke(ima sliku) i rezervacije
+meni ima posebno dugme da vidim meni tj sve njegove stavke u posebnoj stranici
+rezervacija ima start time (now) i endtime za endtime dodajem sate koliko ce trajati rezervacija i obavestiti nekako (async) da je rezervacija istekla
+
+
+kada hocu nesto da obrisem, ako je taj objekat povezan sa necim jos da mi iskoci prozor i kaze da je taj objekat uvezan sa tim i tim
+da ispisem to sto je uvezan i da obrisem prvo to
