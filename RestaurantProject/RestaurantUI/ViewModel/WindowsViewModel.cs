@@ -34,7 +34,7 @@ namespace RestaurantUI
         public bool Borderless { get { return (_window.WindowState == WindowState.Maximized || _dockPosition != WindowDockPosition.Undocked); } }
 
         //The size of the resize border around the window
-        public int ResizeBorder { get; set; } = 6;
+        public int ResizeBorder { get { return Borderless ? 0 : 6; } }
 
         //The size of the resize border around the window, taking into account the outer margin
         public Thickness ResizeBorderThickness { get { return new Thickness(ResizeBorder + OuterMarginSize); } }
@@ -50,7 +50,7 @@ namespace RestaurantUI
         public Thickness OuterMarginSizeThickness { get { return new Thickness(OuterMarginSize); } }
 
         // The padding of the inner content of the main window
-        public Thickness InnerContentPadding { get { return new Thickness(ResizeBorder/2); } }
+        public Thickness InnerContentPadding { get; set; } = new Thickness(0);
 
         //Curve edges around the window
         public int WindowRadius
@@ -67,6 +67,9 @@ namespace RestaurantUI
 
         //The height of the title bar
         public GridLength TitleHeightLength { get { return new GridLength(TitleHeight + ResizeBorder); } }
+        
+        //The current page of the application
+        public WindowPage CurrentPage { get; set; } = WindowPage.LogIn;
         #endregion
 
         #region Commands

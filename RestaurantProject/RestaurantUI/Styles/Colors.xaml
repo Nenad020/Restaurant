@@ -11,6 +11,9 @@
     <Color x:Key="ForegroundWhite">#FFFFFF</Color>
     <SolidColorBrush x:Key="ForegroundWhiteBrush" Color="{StaticResource ForegroundWhite}" />
 
+    <Color x:Key="Slategray">#708090</Color>
+    <SolidColorBrush x:Key="SlategrayBrush" Color="{StaticResource Slategray}" />
+
     <Color x:Key="MouseOverGray">#D3D3D3</Color>
     <SolidColorBrush x:Key="MouseOverGrayBrush" Color="{StaticResource MouseOverGray}" />
 
