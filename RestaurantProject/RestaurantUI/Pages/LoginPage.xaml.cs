@@ -18,16 +18,11 @@ namespace RestaurantUI
     /// <summary>
     /// Interaction logic for LoginPage.xaml
     /// </summary>
-    public partial class LoginPage : BasePage
+    public partial class LoginPage : BasePage<LogInViewModel>
     {
         public LoginPage()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            AnimateOut();
         }
     }
 }

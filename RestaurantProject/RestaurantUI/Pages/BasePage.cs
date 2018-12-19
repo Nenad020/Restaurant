@@ -9,8 +9,13 @@ using System.Windows;
 namespace RestaurantUI
 {
      //A base page for all pages to gain base functionality
-    public class BasePage : Page
+    public class BasePage<VM> : Page where VM : BaseViewModel, new()
     {
+        #region Private Properties
+        //The View Model associated with this page
+        private VM _viewModel;
+        #endregion
+
         #region Public Properties
         //Property when the page is first loaded
         public PageAnimations LoadAnimation { get; set; } = PageAnimations.SlideInFromRight;
@@ -20,6 +25,20 @@ namespace RestaurantUI
         
         //The time any slide animation takes to complete
         public float AnimationSeconds { get; set; } = 0.8f;
+
+        //The View Model associated with this page
+        public VM ViewModel
+        {
+            get { return _viewModel; }
+            set
+            {
+                if (_viewModel == value)
+                    return;
+                
+                _viewModel = value;
+                this.DataContext = _viewModel;
+            }
+        }
         #endregion
 
         public BasePage()
@@ -28,6 +47,7 @@ namespace RestaurantUI
                 Visibility = Visibility.Collapsed;
             
             this.Loaded += BasePage_LoadedAsync;
+            ViewModel = new VM();
         }
 
         //Fire this event when page is loaded, to perfome animation

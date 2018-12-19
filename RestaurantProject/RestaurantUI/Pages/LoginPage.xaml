@@ -1,4 +1,4 @@
-﻿<local:BasePage x:Class="RestaurantUI.LoginPage"
+﻿<local:BasePage x:TypeArguments="local:LogInViewModel" x:Class="RestaurantUI.LoginPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,7 +7,10 @@
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="700"
       Title="LoginPage">
-    
+    <Page.Resources>
+        <local:MultiCloneConverter x:Key="multiCloner"/>
+    </Page.Resources>
+
     <Border>
         <Grid>
             <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
@@ -40,8 +43,10 @@
                                     <Image Source="/Images/User.png" />
                                 </Button>
 
-                                <TextBox Grid.Column="1" Style="{StaticResource PlaceholderTextBox}" Tag="Email" />
+                                <TextBox Grid.Column="1" Style="{StaticResource PlaceholderTextBox}" Tag="Email" x:Name="EmailTextBox" Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"/>
                             </Grid>
+
+                            <TextBlock Style="{StaticResource ErrorText}" Text="nesto ne valddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddja"/>
 
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -53,10 +58,18 @@
                                     <Image Source="/Images/Password.png" />
                                 </Button>
 
-                                <PasswordBox Grid.Column="1" Style="{StaticResource PlaceholderPasswordBox}" Tag="Password" />
+                                <PasswordBox Grid.Column="1" Style="{StaticResource PlaceholderPasswordBox}" Tag="Password" x:Name="PasswordBox"/>
                             </Grid>
 
-                            <Button Content="Sign In" Style="{StaticResource LogInButton}" Click="Button_Click"/>
+                            <Button Content="Sign In" Style="{StaticResource LogInButton}" Command="{Binding LogInCommand}" >
+                                <Button.CommandParameter>
+                                    <MultiBinding Converter="{StaticResource multiCloner}">
+                                        <Binding Path="Text" ElementName="EmailTextBox"/>
+                                        <Binding Path = "." ElementName="PasswordBox"/>
+                                    </MultiBinding>
+                                </Button.CommandParameter>
+                            </Button>
+                                    
                         </StackPanel>
                     </Border>
                 </StackPanel>
