@@ -61,7 +61,7 @@
                                         </Button>
 
                                         <Viewbox Grid.Column="1">
-                                            <TextBlock Style="{StaticResource HeaderText}" Text="Restaurant"/>
+                                            <TextBlock Style="{StaticResource HeaderText}" Text="      Restaurant"/>
                                         </Viewbox>
 
                                         <StackPanel Grid.Column="2" Orientation="Horizontal">
@@ -92,6 +92,13 @@
     </WindowChrome.WindowChrome>
 
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush>
+                <GradientStop Color="{StaticResource BackgroundBlack}" Offset="0.0" />
+                <GradientStop Color="{StaticResource BackgroundRed}" Offset="1.0" />
+            </LinearGradientBrush>
+        </Grid.Background>
+
         <Frame x:Name="MainFrame" Content="{Binding CurrentPage, Converter={local:WindowPageValueConverter}}" />
     </Grid>
 </Window>
