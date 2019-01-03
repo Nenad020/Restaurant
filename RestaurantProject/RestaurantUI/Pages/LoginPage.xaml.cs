@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -18,11 +19,19 @@ namespace RestaurantUI
     /// <summary>
     /// Interaction logic for LoginPage.xaml
     /// </summary>
-    public partial class LoginPage : BasePage<LogInViewModel>
+    public partial class LoginPage : BasePage<LogInViewModel>, IPassword
     {
         public LoginPage()
         {
             InitializeComponent();
+        }
+
+        public SecureString SecurePassword
+        {
+            get
+            {
+                return PasswordBox.SecurePassword;
+            }
         }
     }
 }

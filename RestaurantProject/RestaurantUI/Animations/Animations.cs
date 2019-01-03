@@ -10,11 +10,12 @@ using System.Windows.Media.Animation;
 namespace RestaurantUI
 {
     //This class helps to animate pages in specific ways
-    public static class Animations
+    public class Animations
     {
         #region Storyboards
+
         //Slides a page in from the right
-        public static async Task SlideInFromRightAsync(this Page page, float seconds)
+        public static async Task SlideInFromRightAsync(Page page, float seconds)
         {
             var storyboard = new Storyboard();
 
@@ -29,7 +30,7 @@ namespace RestaurantUI
         }
 
         //Slides a page out to the left
-        public static async Task SlideOutToLeftAsync(this Page page, float seconds)
+        public static async Task SlideOutToLeftAsync(Page page, float seconds)
         {
             var storyboard = new Storyboard();
 
@@ -42,9 +43,11 @@ namespace RestaurantUI
 
             await Task.Delay((int)(seconds * 1000));
         }
+
         #endregion
 
         #region Animations
+
         //Adds a slide from right animation to the storyboard
         public static ThicknessAnimation SlideFromRightAnimation(float seconds, double offset, float decelerationRatio)
         {
@@ -106,6 +109,7 @@ namespace RestaurantUI
 
             return animation;
         }
+
         #endregion
     }
 }

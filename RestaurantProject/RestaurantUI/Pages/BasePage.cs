@@ -12,11 +12,14 @@ namespace RestaurantUI
     public class BasePage<VM> : Page where VM : BaseViewModel, new()
     {
         #region Private Properties
+
         //The View Model associated with this page
         private VM _viewModel;
+
         #endregion
 
         #region Public Properties
+
         //Property when the page is first loaded
         public PageAnimations LoadAnimation { get; set; } = PageAnimations.SlideInFromRight;
         
@@ -39,6 +42,7 @@ namespace RestaurantUI
                 this.DataContext = _viewModel;
             }
         }
+
         #endregion
 
         public BasePage()
@@ -57,6 +61,7 @@ namespace RestaurantUI
         }
 
         #region Animations
+
         //Animates the page in
         public async Task AnimateIn()
         {
@@ -66,7 +71,7 @@ namespace RestaurantUI
             switch (LoadAnimation)
             {
                 case PageAnimations.SlideInFromRight:
-                    await this.SlideInFromRightAsync(AnimationSeconds);
+                    await Animations.SlideInFromRightAsync(this, AnimationSeconds);
 
                     break;
             }
@@ -81,11 +86,12 @@ namespace RestaurantUI
             switch (UnloadAnimation)
             {
                 case PageAnimations.SlideOutToLeft:
-                    await this.SlideOutToLeftAsync(AnimationSeconds);
+                    await Animations.SlideOutToLeftAsync(this, AnimationSeconds);
 
                     break;
             }
         }
+
         #endregion
     }
 }

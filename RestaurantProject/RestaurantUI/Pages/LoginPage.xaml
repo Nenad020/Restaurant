@@ -4,7 +4,8 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:RestaurantUI"
-      mc:Ignorable="d" 
+      mc:Ignorable="d"
+      x:Name="LogInPage"
       d:DesignHeight="700" d:DesignWidth="700"
       Title="LoginPage">
     <Page.Resources>
@@ -28,7 +29,7 @@
                                        Margin="0 0 0 -40"
                                        Foreground="{StaticResource BackgroundBlackBrush}" />
 
-                            <TextBlock Text="sign in" 
+                            <TextBlock Text="log in" 
                                        FontSize="{StaticResource Size50}" 
                                        FontFamily="{StaticResource Raavi}"
                                        Foreground="{StaticResource BackgroundBlackBrush}" />
@@ -39,14 +40,15 @@
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
 
-                                <Button Style="{StaticResource IconButton}">
+                                <Button Style="{StaticResource IconButton}" IsEnabled="False">
                                     <Image Source="/Images/User.png" />
                                 </Button>
 
-                                <TextBox Grid.Column="1" Style="{StaticResource PlaceholderTextBox}" Tag="Email" x:Name="EmailTextBox" Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"/>
+                                <TextBox Grid.Column="1" 
+                                         Style="{StaticResource PlaceholderTextBox}" 
+                                         Tag="Email" 
+                                         x:Name="EmailTextBox" />
                             </Grid>
-
-                            <TextBlock Style="{StaticResource ErrorText}" Text="nesto ne valddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddja"/>
 
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -54,18 +56,24 @@
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
 
-                                <Button Style="{StaticResource IconButton}">
+                                <Button Style="{StaticResource IconButton}" IsEnabled="False">
                                     <Image Source="/Images/Password.png" />
                                 </Button>
 
-                                <PasswordBox Grid.Column="1" Style="{StaticResource PlaceholderPasswordBox}" Tag="Password" x:Name="PasswordBox"/>
+                                <PasswordBox Grid.Column="1" 
+                                             Style="{StaticResource PlaceholderPasswordBox}" 
+                                             Tag="Password" 
+                                             x:Name="PasswordBox"/>
                             </Grid>
 
-                            <Button Content="Sign In" Style="{StaticResource LogInButton}" Command="{Binding LogInCommand}" >
+                            <Button Content="Log in" 
+                                    Style="{StaticResource LogInButton}" 
+                                    Command="{Binding LogInCommand}" >
+                                
                                 <Button.CommandParameter>
                                     <MultiBinding Converter="{StaticResource multiCloner}">
                                         <Binding Path="Text" ElementName="EmailTextBox"/>
-                                        <Binding Path = "." ElementName="PasswordBox"/>
+                                        <Binding ElementName="LogInPage"/>
                                     </MultiBinding>
                                 </Button.CommandParameter>
                             </Button>

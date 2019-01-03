@@ -10,32 +10,17 @@ namespace RestaurantUI
 {
     public class LogInViewModel : BaseViewModel
     {
-        #region Private properties
-        private string email;
-        #endregion
+        #region Public Properties
 
-        #region Public properties
-        public string Email
-        {
-            get
-            {
-                return email;
-            }
-            set
-            {
-                email = value;
-
-                if (email.Length < 5)
-                    MessageBox.Show("cao");
-            }
-        }
-        
         //A flag indicating if the login command is running
         public bool LoginIsRunning { get; set; }
+
         #endregion
 
         #region Commands
+
         public ICommand LogInCommand { get; set; }
+
         #endregion
 
         public LogInViewModel()
@@ -46,7 +31,17 @@ namespace RestaurantUI
         //Attempts to log the user in
         public async Task Login(object parameter)
         {
-            
+            if (parameter == null && (parameter is Object[]) == false)
+                return;
+            Object[] parameters = parameter as Object[];
+
+            await RunCommand(() => LoginIsRunning, async () =>
+            {
+                await Task.Delay(5000);
+
+                var email = parameters[0];
+                var pass = SecureStringHelpers.Unsecure((parameters[1] as IPassword).SecurePassword);
+            });
         }
     }
 }

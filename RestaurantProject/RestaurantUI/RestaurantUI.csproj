@@ -71,11 +71,15 @@
     </ApplicationDefinition>
     <Compile Include="Animations\Animations.cs" />
     <Compile Include="Animations\PageAnimations.cs" />
+    <Compile Include="AttachedProperties\BaseAttachedProperty.cs" />
     <Compile Include="DataModel\WindowPage.cs" />
+    <Compile Include="Expression\ExpressionHelpers.cs" />
     <Compile Include="Pages\BasePage.cs" />
     <Compile Include="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Security\IPassword.cs" />
+    <Compile Include="Security\SecureStringHelpers.cs" />
     <Compile Include="ValueConverter\BaseValueConverter.cs" />
     <Compile Include="ValueConverter\MultiCloneConverter.cs" />
     <Compile Include="ValueConverter\WindowPageValueConverter.cs" />

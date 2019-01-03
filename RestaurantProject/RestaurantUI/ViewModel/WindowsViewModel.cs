@@ -10,7 +10,8 @@ namespace RestaurantUI
 {
     public class WindowsViewModel : BaseViewModel
     {
-        #region Private properties
+        #region Private Properties
+
         private Window _window;
 
         //The margin around the window to allow for a drop shadow
@@ -19,11 +20,12 @@ namespace RestaurantUI
         //Curve edges around the window
         private int _windowRadius = 10;
 
-        // </summary>
         private WindowDockPosition _dockPosition = WindowDockPosition.Undocked;
+
         #endregion
 
-        #region Public properties
+        #region Public Properties
+
         //Minimun width of windows
         public double MinimumWidth { get; set; } = 400;
 
@@ -70,12 +72,15 @@ namespace RestaurantUI
         
         //The current page of the application
         public WindowPage CurrentPage { get; set; } = WindowPage.LogIn;
+
         #endregion
 
         #region Commands
+
         public ICommand MinimizeCommand { get; set; }
         public ICommand MaximizeCommand { get; set; }
         public ICommand CloseCommand { get; set; }
+
         #endregion
 
         public WindowsViewModel(Window window)
@@ -91,10 +96,10 @@ namespace RestaurantUI
             MaximizeCommand = new BaseCommand(() => _window.WindowState ^= WindowState.Maximized);
             CloseCommand = new BaseCommand(() => _window.Close());
 
-            // Fix window resize issue
+            //Fix window resize issue
             var resizer = new WindowResizer(_window);
 
-            // Listen out for dock changes
+            //Listen out for dock changes
             resizer.WindowDockChanged += (dock) =>
             {
                 _dockPosition = dock;
